@@ -3,7 +3,6 @@ from locust import HttpUser, TaskSet, between
 
 products = [
         '0PUK6V6EV0',
-        '1YMWWN1N40',
         '2ZYFJ3GM2N',
         '66VCHSJNUP',
         '6E92ZMYYFZ',
@@ -55,4 +54,4 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
-    wait_time = between(1, 10)
+    wait_time = between(1, 5)

@@ -1,5 +1,5 @@
 import random
-from locust import HttpUser, task
+from locust import HttpUser, task, between
 
 products = [
     '0PUK6V6EV0',
@@ -13,6 +13,7 @@ products = [
     'OLJCESPC7Z']
 
 class CartUser(HttpUser):
+    wait_time = between(1,5)
     @task
     def viewCart(self):
         self.client.get("/cart")
@@ -26,3 +27,4 @@ class CartUser(HttpUser):
     @task
     def emptyCart(self):
         self.client.post("/cart/empty")
+

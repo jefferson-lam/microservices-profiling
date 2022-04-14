@@ -1,5 +1,5 @@
 import random
-from locust import HttpUser, task
+from locust import HttpUser, task, between
 
 products = [
     '0PUK6V6EV0',
@@ -13,6 +13,7 @@ products = [
     'OLJCESPC7Z']
 
 class ProductLoader(HttpUser):
+    wait_time = between(1, 5)
     @task
     def browseIndex(self):
         self.client.get("/")
